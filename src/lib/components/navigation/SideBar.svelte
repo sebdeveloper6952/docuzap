@@ -12,7 +12,7 @@
 
 <div class="flex h-full">
 	<aside
-		class="w-20 flex h-full flex-col items-center bg-background-500 dark:text-gray-100 dark:bg-primary-900/10"
+		class="w-20 flex h-full flex-col items-center bg-primary-100/10 dark:text-gray-100 dark:bg-primary-900/10"
 	>
 		<div
 			class="w-full py-2 flex flex-col h-[4.5rem] items-center justify-center text-black dark:border-gray-500 dark:text-gray-300"
@@ -63,7 +63,7 @@
 		<div class="flex flex-col items-center gap-y-4 py-4">
 			<button
 				on:click={toggleTheme}
-				class="flex flex-col justify-center items-center border-none text-gray-900 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-500"
+				class="flex flex-col justify-center items-center border-none text-gray-500 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-500"
 			>
 				{#if $themeStore}
 					<Icon icon="solar:sun-2-line-duotone" width="24" height="24" />
@@ -74,7 +74,7 @@
 			{#if $userStore}
 				<button
 					on:click={() => logout()}
-					class="flex flex-col justify-center items-center border-none text-gray-900 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-500"
+					class="flex flex-col justify-center items-center border-none text-gray-500 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-500"
 				>
 					<Icon icon="solar:logout-2-bold-duotone" width="24" height="24" />
 				</button>

@@ -78,13 +78,13 @@
 </script>
 
 <div class="w-full flex flex-col items-center">
-	<div class="w-full md:max-w-screen-md flex flex-col bg-gray-100 p-4 rounded-3xl">
+	<div class="w-full md:max-w-screen-md flex flex-col bg-primary-100/10 p-4 rounded-3xl">
 		<div class="w-full flex items-center gap-4 text-gray-400">
 			{#each steps as step, i}
 				<div
 					class="flex gap-2 items-center"
 					class:text-gray-600={activeStep === i}
-					class:text-primary-500={activeStep > i}
+					class:text-primary-900={activeStep > i}
 				>
 					<Icon icon={step.icon} width="16" height="16" />
 					<p>{step.step}</p>
@@ -92,7 +92,7 @@
 				{#if i < steps.length - 1}
 					<div
 						class="h-1 grow bg-gray-300 rounded-3xl"
-						class:!bg-primary-500={activeStep > i}
+						class:!bg-primary-900={activeStep > i}
 					></div>
 				{/if}
 			{/each}

@@ -73,7 +73,6 @@
 
 	const onSubmit = async () => {
 		const e = await publishSignedRequest(event?.id!, uploadedFileMetadataEventId);
-		console.warn(e);
 	};
 </script>
 
@@ -110,46 +109,46 @@
 				<p class="text-xl font-bold">Submitted Signatures</p>
 			</div>
 			<div class="mt-4 w-full flex justify-center">
-				{#if !responseStore}
-					<div class="flex flex-col items-center">
+				{#if !$responseStore || $responseStore.length === 0}
+					<div class="w-full flex flex-col items-center">
 						<Icon icon="solar:clock-square-line-duotone" width="48" height="48" />
 						<p>Signature submissions will appear here</p>
 					</div>
-				{/if}
-				<div class="w-full">
-					{#if responseStore}
-						{#each $responseStore as response}
-							<!-- response card / list item -->
-							{#await response.init() then}
-								<div class="w-full p-4 bg-primary-500/10 rounded-3xl">
-									<div class="">
-										<div class="flex items-center gap-2">
-											<p>Signed by</p>
-											<UserPill user={response.author} />
-											<div class="grow"></div>
-											<div class="flex items-center gap-1">
-												<a
-													href={response.fileUrl}
-													target="_blank"
-													class="text-primary-900/75 hover:text-primary-900"
-												>
-													<Icon icon="dashicons:external" width="24" height="24" />
-												</a>
-												<button on:click={() => deleteEvents([response.id])}>
-													<Icon icon="dashicons:trash" width="16" height="16" />
-												</button>
-											</div>
-										</div>
-										<div class="mt-2">
-											<p class="text-xs">{dayjs(response.created_at * 1000).format('lll')}</p>
+				{:else}
+					{#each $responseStore as response}
+						<!-- response card / list item -->
+						{#await response.init() then}
+							<div class="w-full p-4 bg-primary-500/10 rounded-3xl">
+								<div class="">
+									<div class="flex items-center gap-2">
+										<p>Signed by</p>
+										<UserPill user={response.author} />
+										<div class="grow"></div>
+										<div class="flex items-center gap-1">
+											<a
+												href={response.fileUrl}
+												target="_blank"
+												class="text-primary-900/75 hover:text-primary-900"
+											>
+												<Icon icon="dashicons:external" width="24" height="24" />
+											</a>
+											<button
+												on:click={() => deleteEvents([response.id])}
+												class="text-primary-900/75 hover:text-primary-900"
+											>
+												<Icon icon="dashicons:trash" width="16" height="16" />
+											</button>
 										</div>
 									</div>
+									<div class="mt-2">
+										<p class="text-xs">{dayjs(response.created_at * 1000).format('lll')}</p>
+									</div>
 								</div>
-								<!-- end response card / list item -->
-							{/await}
-						{/each}
-					{/if}
-				</div>
+							</div>
+							<!-- end response card / list item -->
+						{/await}
+					{/each}
+				{/if}
 			</div>
 			<!-- end submitted sigs -->
 
