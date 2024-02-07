@@ -12,9 +12,9 @@ export const ndk = new NDKSvelte({
 	cacheAdapter: dexieAdapter
 });
 
-await ndk.connect();
-
 export const init = async () => {
+	await ndk.connect();
+
 	if (window.localStorage) {
 		const pk = get(persisted('pk', ''));
 		const sk = get(persisted('sk', ''));
