@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { FileMetadataEvent, fetchUserFiles, userFilesStore } from '@lib/nostr/subToUserFiles';
+	import { fetchUserFiles, userFilesStore } from '@lib/nostr/subToUserFiles';
 	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
+	import type { FileMetadataEvent } from '@lib/nostr/events/fileMetadata';
 
 	export let selectedFiles = new Set<FileMetadataEvent>();
 	export let multiple = false;

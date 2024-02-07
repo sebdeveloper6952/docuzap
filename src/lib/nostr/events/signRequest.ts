@@ -1,7 +1,8 @@
 import { hashFile } from '@lib/helpers/hashFile';
-import NDK, { NDKEvent, NDKKind, type NostrEvent } from '@nostr-dev-kit/ndk';
+import NDK, { NDKEvent, NDKKind, NDKUser, type NostrEvent } from '@nostr-dev-kit/ndk';
+import { BaseEvent } from './baseEvent';
 
-export class SignRequestEvent extends NDKEvent {
+export class SignRequestEvent extends BaseEvent {
 	fileMetadataEventId?: string;
 	fileMetadataEvent: NDKEvent | null | undefined;
 	signedEvent?: NDKEvent;
@@ -10,6 +11,7 @@ export class SignRequestEvent extends NDKEvent {
 	fileUrl?: string;
 	hashMatches: boolean = false;
 	isForUser: boolean = false;
+	signers: NDKUser[] = [];
 
 	constructor(ndk?: NDK, rawEvent?: NostrEvent) {
 		super(ndk, rawEvent);
@@ -20,6 +22,8 @@ export class SignRequestEvent extends NDKEvent {
 		rawEvent?.tags.forEach((tag) => {
 			if (tag[0] === 'e') {
 				this.fileMetadataEventId = tag[1];
+			} else if (tag[0] === 'p') {
+				this.signers.push(new NDKUser({ pubkey: tag[1] }));
 			}
 		});
 	}

@@ -6,10 +6,10 @@
 	import UserPillList from '@lib/components/UserPillList.svelte';
 	import UserSearchBar from '@lib/components/UserSearchBar.svelte';
 	import FilledButton from '@lib/components/buttons/FilledButton.svelte';
-	import FilledRouteButton from '@lib/components/buttons/FilledRouteButton.svelte';
 	import OutlinedButton from '@lib/components/buttons/OutlinedButton.svelte';
+	import { FileMetadataEvent } from '@lib/nostr/events/fileMetadata';
 	import { publishSignRequest } from '@lib/nostr/publishSignRequest';
-	import { fetchUserFiles, type FileMetadataEvent } from '@lib/nostr/subToUserFiles';
+	import { fetchUserFiles } from '@lib/nostr/subToUserFiles';
 	import type { NDKUser } from '@nostr-dev-kit/ndk';
 	import { onMount } from 'svelte';
 	import toast from 'svelte-french-toast';

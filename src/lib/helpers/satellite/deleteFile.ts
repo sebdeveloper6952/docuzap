@@ -1,7 +1,7 @@
 import { NDKEvent } from '@nostr-dev-kit/ndk';
 import { ndk } from '@lib/nostr/ndk';
 import { deleteEvents } from '@lib/nostr/deleteEvent';
-import type { FileMetadataEvent } from '@lib/nostr/subToUserFiles';
+import type { FileMetadataEvent } from '@lib/nostr/events/fileMetadata';
 
 export const deleteFile = async (fileMetadataEvent: FileMetadataEvent): Promise<boolean> => {
 	if (!fileMetadataEvent.hash) {

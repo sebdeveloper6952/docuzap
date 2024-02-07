@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { FileMetadataEvent, fetchUserFiles } from '@lib/nostr/subToUserFiles';
-	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
+	import type { FileMetadataEvent } from '@lib/nostr/events/fileMetadata';
 
 	export let files: FileMetadataEvent[] = [];
 </script>

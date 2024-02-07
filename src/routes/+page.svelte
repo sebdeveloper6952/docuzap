@@ -7,6 +7,7 @@
 	import dayjs from 'dayjs';
 	import { nip19 } from 'nostr-tools';
 	import { onDestroy, onMount } from 'svelte';
+	import { deleteEvents } from '@lib/nostr/deleteEvent';
 
 	let signRequestsStore = signRequestStore();
 
@@ -36,7 +37,7 @@
 				<table class="w-full text-sm text-left rtl:text-right text-gray-500">
 					<thead class="text-xs text-gray-700 uppercase bg-gray-200">
 						<tr>
-							<th scope="col" class="px-6 py-3 rounded-tl-3xl">Date</th>
+							<th scope="col" class="px-6 py-3">Date</th>
 							<th scope="col" class="px-6 py-3">Type</th>
 							<th scope="col" class="px-6 py-3">Actions</th>
 						</tr>
@@ -45,7 +46,7 @@
 						{#each $signRequestsStore as event}
 							<tr class="bg-white border-b">
 								<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-									{dayjs(event.created_at).format('lll')}
+									{dayjs(event.created_at * 1000).format('lll')}
 								</th>
 								<td class="px-6 py-4">
 									{#if event.isForUser}
@@ -61,8 +62,11 @@
 									{/if}
 								</td>
 
-								<td class="px-6 py-4">
+								<td class="px-6 py-4 flex items-center gap-2">
 									<FilledButton on:click={() => onDetailsClick(event)}>Details</FilledButton>
+									<button on:click={() => deleteEvents([event.id])}>
+										<Icon icon="dashicons:trash" width="16" height="16" />
+									</button>
 								</td>
 							</tr>
 						{/each}
