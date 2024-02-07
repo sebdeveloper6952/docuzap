@@ -61,7 +61,7 @@
 			</div>
 		</nav>
 		<div class="flex flex-col items-center gap-y-4 py-4">
-			<button
+			<!-- <button
 				on:click={toggleTheme}
 				class="flex flex-col justify-center items-center border-none text-gray-500 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-500"
 			>
@@ -70,7 +70,7 @@
 				{:else}
 					<Icon icon="solar:moon-bold-duotone" width="24" height="24" />
 				{/if}
-			</button>
+			</button> -->
 			{#if $userStore}
 				<button
 					on:click={() => logout()}
