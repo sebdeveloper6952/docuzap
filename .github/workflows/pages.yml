@@ -26,6 +26,8 @@ jobs:
       - uses: actions/configure-pages@v1
         id: pages
       - uses: pnpm/action-setup@v2
+        with:
+          version: 8.9.0
       - run: pnpm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
