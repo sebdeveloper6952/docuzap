@@ -7,7 +7,7 @@ import NDKCacheAdapterDexie from '@nostr-dev-kit/ndk-cache-dexie';
 const dexieAdapter = new NDKCacheAdapterDexie({ dbName: 'signstr' });
 
 export const ndk = new NDKSvelte({
-	explicitRelayUrls: ['wss://nostrue.com'],
+	explicitRelayUrls: ['wss://nostrue.com', 'ws://localhost:4869'],
 	// @ts-ignore
 	cacheAdapter: dexieAdapter
 });
